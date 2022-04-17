@@ -7,7 +7,9 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path("hello/", views.index), # views.def名
     path("products/",views.products),
-    path("products/<int:id>/",views.product_detail,name="product_detail")  # urlに書いてあるidによって変化させる
+    path("products/<int:id>/",views.product_detail,name="product_detail"),  # urlに書いてあるidによって変化させる
+    path("products/Test/",views.Test),
+
 ]
 
  

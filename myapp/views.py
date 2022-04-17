@@ -22,3 +22,7 @@ def product_detail(request,id): # urlのid(数字をparameterとして)受け取
     }
     return render(request,"myapp/detail.html",context)
     #HttpResponse("The product id is:" + str(id)) テスト用
+
+
+def Test(request):
+    return render(request,"myapp/Test.html")  # Htmlファイルを返す
