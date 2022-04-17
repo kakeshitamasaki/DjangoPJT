@@ -2,6 +2,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse #Requestを受けてResponseを返すため
 from .models import Product  # model Product Classを呼び出す
+from .models import Test_DB  # model Test_DB Classを呼び出す
 # Create your views here.
 
 #Requestを受けてResponseを返す　responseの種類は、文字列、Html
