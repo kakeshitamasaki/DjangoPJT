@@ -14,7 +14,7 @@ def products(request):
     context = {
         "products":products
     }
-    return render(request,"myapp/index.html",context)  # Htmlファイルを返す
+    return render(request,"myapp/index.html",context)  # Htmlファイルを返す contextで値をhtmlに渡す
 
 def product_detail(request,id): # urlのid(数字をparameterとして)受け取る
     product = Product.objects.get(id=id)#urlの数字から、modelのidを検索

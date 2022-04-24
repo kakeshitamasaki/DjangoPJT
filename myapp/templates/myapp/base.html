@@ -1,0 +1,37 @@
+{% load static %}<!-- staticを読み込む stylesheetとか-->
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'myapp/styles.css' %}"><!-- Tailwindを読み込む-->
+    </head>
+
+    <body>
+        <nav class="bg-white shadow-lg"><!-- バックグランドカラーと影を付ける-->
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-7"><!-- flex div内を並列で並べる-->
+                        <div> 
+                            <a href="#" class="flex items-center px-2 py-4"><!-- flex div内を並列で並べる   px py padding縦横-->
+                            <img class="h-8 w-8" src = "{% static 'myapp\images\shopping.png' %}" alt="">
+                            <spn class="text-gray-500 font-semibold text-lg">Buy&Sell</spn>
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <!-- nav記述-->
+                            <a href="#" class="py-4 px-2 text-gray-500 font-semibold border-b-4 border-green-500">Home</a>
+                            <a href="#" class="py-4 px-2 text-gray-500 font-semibold">About</a>
+                            <a href="#" class="py-4 px-2 text-gray-500 font-semibold">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+
+
+
+        {% block content %}
+
+        {% endblock %}
+    </body>
+
+</html>
