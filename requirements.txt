@@ -1,5 +1,5 @@
 absl-py==0.12.0
-asgiref==3.5.0
+asgiref==3.4.1
 astunparse==1.6.3
 backports.zoneinfo==0.2.1
 cachetools==4.2.2
@@ -15,12 +15,8 @@ google-auth-oauthlib==0.4.4
 google-pasta==0.2.0
 grpcio==1.32.0
 gunicorn==20.1.0
-h5py==2.10.0
 idna==2.10
-Keras==2.4.0
-Keras-Preprocessing==1.1.2
 Markdown==3.3.4
-numpy==1.19.5
 oauthlib==3.1.1
 opt-einsum==3.3.0
 Pillow==9.1.0
@@ -32,15 +28,8 @@ PyYAML==5.4.1
 requests==2.25.1
 requests-oauthlib==1.3.0
 rsa==4.7.2
-scipy==1.6.3
 six==1.15.0
 sqlparse==0.4.2
-tensorboard==2.5.0
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.0
-tensorflow==2.4.0
-tensorflow-estimator==2.4.0
-termcolor==1.1.0
 typing-extensions==3.7.4.3
 tzdata==2022.1
 urllib3==1.26.5
