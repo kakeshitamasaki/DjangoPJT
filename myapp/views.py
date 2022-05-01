@@ -72,4 +72,27 @@ def delete_product(request,id):
 
 
 def Test(request):
+    if request.method == "POST":  # requestがpostだったらsubmitされたデータを取得する
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        desc = request.POST.get("desc")
+        #image = request.FILES["upload"]
+        print(name,price,desc)
+        return redirect("/myapp/products/Test/result")
+
+
     return render(request,"myapp/Test.html")  # Htmlファイルを返す
+
+
+def TestResult(request):
+    product1 = "A"
+    product2 = "B"
+    context={
+        "product1":product1,
+        "product2":product2
+    }
+
+    
+
+
+    return render(request,"myapp/TestResult.html",context) 

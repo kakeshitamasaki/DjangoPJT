@@ -1,8 +1,8 @@
-{% load static %}
+{% load static %}<!-- staticを読み込む stylesheetとか-->
+
 <head>
     <link rel="stylesheet" href="{% static 'myapp/styles.css' %}"><!-- Tailwindを読み込む-->
 </head>
-
 
 <h1 class="text-2xl font-bold m-10">➕ Update Product</h1>
 
@@ -39,3 +39,5 @@
     
     
 </form>
+
+<p class = "bg-green-500 text-white">{{product2}}</p>
