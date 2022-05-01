@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@+5+gzm8i=)q5b&c8+97!vpll1zj93m!51zy7pskf-8s_m8fu&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["kake654321.pythonanywhere.com","kake4321.pythonanywhere.com","127.0.0.1"]  # 接続許可するホスト名
+ALLOWED_HOSTS = ["polar-hollows-53585.herokuapp.com","kake654321.pythonanywhere.com","kake4321.pythonanywhere.com","127.0.0.1"]  # 接続許可するホスト名
 
 
 # Application definition
