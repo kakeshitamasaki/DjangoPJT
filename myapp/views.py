@@ -3,6 +3,8 @@ from django.shortcuts import render,redirect #ページ遷移用
 from django.http import HttpResponse #Requestを受けてResponseを返すため
 from .models import Product  # model Product Classを呼び出す
 from .models import Test_DB  # model Test_DB Classを呼び出す
+from django.conf import settings  # 設定からファイルパスを呼び出すため
+
 # Create your views here.
 
 #Requestを受けてResponseを返す　responseの種類は、文字列、Html
@@ -72,6 +74,30 @@ def delete_product(request,id):
 
 
 def Test(request):
+
+    from tensorflow.keras.models import load_model
+    import joblib
+    import numpy as np
+    # 設定からモデルファイルのパスを取得
+    print(settings.MODEL_FILE_PATH)
+
+    flower_model = load_model(settings.MODEL_FILE_PATH)
+    flower_scaler = joblib.load(settings.SCALER_FILE_PATH)
+
+    flower = [[14,14,1,41]]
+    flower = flower_scaler.transform(flower)
+    predicted = np.argmax(flower_model.predict(flower),axis=1)
+    classes = np.array(["setosa","versicolor","virginica"])
+    print(predicted)
+    print(classes[predicted])
+
+    context={
+        "product1":classes[predicted],
+    }
+
+
+
+
     if request.method == "POST":  # requestがpostだったらsubmitされたデータを取得する
         name = request.POST.get("name")
         price = request.POST.get("price")
@@ -81,7 +107,7 @@ def Test(request):
         return redirect("/myapp/products/Test/result")
 
 
-    return render(request,"myapp/Test.html")  # Htmlファイルを返す
+    return render(request,"myapp/Test.html",context)  # Htmlファイルを返す
 
 
 def TestResult(request):
