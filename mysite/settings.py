@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-django_heroku.settings(locals(), staticfiles=True)
+#django_heroku.settings(locals(), staticfiles=False)
 #STATICFILES_DIRS = (os.path.join(BASE_DIR,"myapp/static"),)
 #print(STATICFILES_DIRS)
 # Default primary key field type
