@@ -25,5 +25,8 @@ urlpatterns = [
     path("myapp/",include("myapp.urls")), #myappのurlを参照する
 ]
 
-urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 
+#urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 
  
+urlpatterns = [
+path('admin/', admin.site.urls),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
