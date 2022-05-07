@@ -122,16 +122,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 #STATIC_URL = 'static/'
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-#MIDDLEWARE += [
-#        'whitenoise.middleware.WhiteNoiseMiddleware',
-#    ]
+MIDDLEWARE += [
+        'whitenoise.middleware.WhiteNoiseMiddleware',
+    ]
 #django_heroku.settings(locals(), staticfiles=False)
 #STATICFILES_DIRS = (os.path.join(BASE_DIR,"myapp/static"),)
 #print(STATICFILES_DIRS)
@@ -140,8 +140,8 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = BASE_DIR / "media"
-#MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # デプロイ用
+#MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # デプロイ用
 MEDIA_URL = "/media/"
 
 # 機械学習用追記
