@@ -13,6 +13,7 @@ urlpatterns = [
     path("products/delete/<int:id>/",views.delete_product,name="delete_product"),
     path("products/Test/",views.Test),
     path("products/Test/result",views.TestResult,name="TestResultAA"),
+    path("products/StressForm/",views.StressForm),
 
 ]
 

@@ -122,3 +122,9 @@ def TestResult(request):
 
 
     return render(request,"myapp/TestResult.html",context) 
+
+def StressForm(request):
+
+
+    return render(request,"myapp/StressForm.html")
+
