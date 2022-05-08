@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect #ページ遷移用
 from django.http import HttpResponse #Requestを受けてResponseを返すため
 from .models import Product  # model Product Classを呼び出す
 from .models import Test_DB  # model Test_DB Classを呼び出す
+from .models import Stress_DB
 from django.conf import settings  # 設定からファイルパスを呼び出すため
 
 # Create your views here.
@@ -81,9 +82,9 @@ def Test(request):
     # 設定からモデルファイルのパスを取得
     print(settings.MODEL_FILE_PATH)
 
-    flower_model = load_model(settings.MODEL_FILE_PATH)
     flower_scaler = joblib.load(settings.SCALER_FILE_PATH)
-
+    flower_model = load_model(settings.MODEL_FILE_PATH)
+    
     flower = [[14,14,1,41]]
     flower = flower_scaler.transform(flower)
     predicted = np.argmax(flower_model.predict(flower),axis=1)
@@ -125,6 +126,56 @@ def TestResult(request):
 
 def StressForm(request):
 
+    if request.method == "POST":  # requestがpostだったらsubmitされたデータを取得する
+        humidity = request.POST.get("humidity")
+        temperature = request.POST.get("temperature")
+        step_count = request.POST.get("step_count")
+
+        
+
+        #機械学習で判定する
+        from tensorflow.keras.models import load_model
+        import joblib
+        import numpy as np
+
+        
+        stress_scaler = joblib.load(settings.STRESS_SCALER_FILE_PATH)
+        stress_model = load_model(settings.STRESS_MODEL_FILE_PATH)
+
+        print(type(humidity))
+        
+        Input = [[int(humidity), int(temperature), int(step_count)]]
+        Input = stress_scaler.transform(Input)
+        predicted = np.argmax(stress_model.predict(Input),axis=1)
+        classes = np.array(["Low","Medium","High"])
+        print(predicted)
+        print(classes[predicted])
+
+
+
+        #データベースへ値を追加する
+        From_value = Stress_DB(humidity=humidity,temperature=temperature,step_count=step_count, stress_level=classes[predicted])
+        From_value.save()
+        
+
+
+
+
+        #処理が終わったらリダイレクトする
+        return redirect("/myapp/products/StressResult")
 
     return render(request,"myapp/StressForm.html")
 
+
+def StressResult(request):
+
+    # IDが最初
+    #result= Stress_DB.objects.order_by("id").first()
+    # IDが最後
+    result = Stress_DB.objects.order_by("id").last()
+
+    context={
+        "result":result
+    }
+
+    return render(request,"myapp/StressResult.html",context)

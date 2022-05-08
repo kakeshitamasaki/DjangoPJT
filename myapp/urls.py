@@ -14,6 +14,7 @@ urlpatterns = [
     path("products/Test/",views.Test),
     path("products/Test/result",views.TestResult,name="TestResultAA"),
     path("products/StressForm/",views.StressForm),
+    path("products/StressResult/",views.StressResult),
 
 ]
 

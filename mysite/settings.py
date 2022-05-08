@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 #from msilib.schema import Media
 from pathlib import Path
 import os
-import django_heroku
+import django_heroku  # herokuデプロイ用
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +29,9 @@ SECRET_KEY = 'django-insecure-@+5+gzm8i=)q5b&c8+97!vpll1zj93m!51zy7pskf-8s_m8fu&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #DEBUG = False
+#なぜかHerokuにデプロイする際Falseだと画像が判定されなくなります
+
+
 
 ALLOWED_HOSTS = ["polar-hollows-53585.herokuapp.com","kake654321.pythonanywhere.com","kake4321.pythonanywhere.com","127.0.0.1"]  # 接続許可するホスト名
 
@@ -129,6 +132,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+#デプロイ用static用設定の追加
 MIDDLEWARE += [
         'whitenoise.middleware.WhiteNoiseMiddleware',
     ]
@@ -140,11 +144,18 @@ MIDDLEWARE += [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#MEDIA_ROOT = BASE_DIR / "media"
+#MEDIA_ROOT = BASE_DIR / "media"  # 開発環境用
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # デプロイ用
 MEDIA_URL = "/media/"
+
+
+
+
 
 # 機械学習用追記
 print(BASE_DIR)
 SCALER_FILE_PATH = os.path.join(BASE_DIR, 'iris_scaler.pkl') #パス結合
 MODEL_FILE_PATH = os.path.join(BASE_DIR, 'final_iris_model.h5') #パス結合
+
+STRESS_SCALER_FILE_PATH = os.path.join(BASE_DIR, 'stress_scaler.pkl') #パス結合
+STRESS_MODEL_FILE_PATH = os.path.join(BASE_DIR, 'final_stress_model.h5') #パス結合
